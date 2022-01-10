@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DibujarCuadrado, Parámetro rest</title>
+</head>
+
+<body>
+
+  <canvas width="600" height="400"></canvas>
+
+  <script>
+    function consola(params) {
+      console.log(params);
+    }
+
+    //function para capturar elemento canvas
+    function contextCanvas(selectorHtml) {
+      let pantalla = document.querySelector(selectorHtml);
+      let pincel = pantalla.getContext("2d");
+
+      return pincel;
+    }
+
+    //function para validar color css
+    function isColor(strColor) {
+      let isColor;
+      if (strColor !== "") {
+        let s = new Option().style;
+        s.color = strColor;
+        isColor = s.color == strColor;
+      } else {
+        isColor = false;
+      }
+
+      return isColor;
+    }
+
+    //function para dibujarContornos
+    function dibujarContorno(x, y, ...c) {
+
+      if (c.length == 4) {
+        let pincel = c[3];
+        let color = c[0];
+        let width = c[1]
+        let height = c[2];
+        //valores por defecto en caso de que no vengan correctamente
+        if ((isColor(c[0]) != false) || (color = "black"));
+        if ((c[1] >= 0) || (width = pantalla.width));
+        if ((c[2] >= 0) || (height = pantalla.height));
+
+        //cuadrado contorno
+
+        pincel.strokeStyle = color;
+        pincel.strokeRect(x, y, width, height);//border cuadrado 1
+      } else {
+        console.error("faltan parámetros")
+      }
+    }
+
+    //function para dibujar Cuadrado
+    function dibujarCuadrado(x, y, ...c) {
+
+      if (c.length == 4) {
+        let pincel = c[3], color = c[0], width = c[1], height = c[2];
+        //valores por defecto en caso de que no vengan correctamente
+        if ((isColor(c[0]) != false) || (color = "green"));
+        if ((c[1] != 0) || (width = pantalla.width));
+        if ((c[2] != 0) || (height = pantalla.height));
+
+        //cuadrado
+        pincel.fillStyle = color;
+        pincel.fillRect(x, y, width, height);//cuadrado 1
+      } else {
+        console.error("faltan parámetros")
+      }
+
+    }
+
+    consola("Dibujar Cuadrado v.1.0");
+
+    //contexto contexto canvas
+    let pizarra = contextCanvas("canvas"); //esta function espera un tagHtml, en este caso es el elemento canvas
+    let x = 0;
+    while (x < 600) {
+      dibujarCuadrado(x, 0, "yellow", 50, 50, pizarra);
+      dibujarContorno(x, 0, "black", 50, 50, pizarra);
+
+      dibujarCuadrado(x, 50, "blue", 50, 50, pizarra);
+      dibujarContorno(x, 50, "black", 50, 50, pizarra);
+
+      dibujarCuadrado(x, 100, "red", 50, 50, pizarra);
+      dibujarContorno(x, 100, "black", 50, 50, pizarra);
+      x += 50;
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>
