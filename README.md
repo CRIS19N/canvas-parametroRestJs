@@ -66,7 +66,7 @@ _Ejemplo pintando un cuadro color fondo red y contornos orange_
 
 * Este es un ejemplo practico, para usar parametros rest 📢
 * Puede Mejorarlo. 
-* Si deseas corregir, No dudes hacerelo saber 🤓.
+* Si deseas corregir, No dudes hacerlo saber 🤓.
 
 
 
